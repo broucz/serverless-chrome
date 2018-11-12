@@ -5,8 +5,8 @@
 # Build Chromium for Amazon Linux.
 # Assumes root privileges. Or, more likely, Docker—take a look at
 # the corresponding Dockerfile in this directory.
-# 
-# Requires 
+#
+# Requires
 #
 # Usage: ./build.sh
 #
@@ -28,7 +28,7 @@ yum install -y \
   bzip2-devel cairo-devel cups-devel dbus-devel dbus-glib-devel \
   expat-devel fontconfig-devel freetype-devel gcc-c++ GConf2-devel \
   glib2-devel glibc.i686 gperf glib2-devel gtk2-devel gtk3-devel \
-  java-1.*.0-openjdk-devel libatomic libcap-devel libffi-devel \
+  java-1.7.0-openjdk-devel libatomic libcap-devel libffi-devel \
   libgcc.i686 libgnome-keyring-devel libjpeg-devel libstdc++.i686 \
   libX11-devel libXScrnSaver-devel libXtst-devel \
   libxkbcommon-x11-devel ncurses-compat-libs nspr-devel nss-devel \
@@ -102,7 +102,7 @@ strip -o "$BUILD_BASE/bin/headless-chromium" build/chromium/src/out/Headless/hea
 
 # Use UPX to package headless chromium
 # this adds 1-1.5 seconds of startup time so generally
-# not so great for use in AWS Lambda so we don't actually use it 
+# not so great for use in AWS Lambda so we don't actually use it
 # but left here in case someone finds it useful
 # yum install -y ucl ucl-devel --enablerepo=epel
 # cd build
