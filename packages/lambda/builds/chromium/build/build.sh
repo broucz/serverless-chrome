@@ -28,7 +28,7 @@ yum install -y \
   bzip2-devel cairo-devel cups-devel dbus-devel dbus-glib-devel \
   expat-devel fontconfig-devel freetype-devel gcc-c++ GConf2-devel \
   glib2-devel glibc.i686 gperf glib2-devel gtk2-devel gtk3-devel \
-  java-1.7.0-openjdk-devel libatomic libcap-devel libffi-devel \
+  java-1.8.0-openjdk-devel libatomic libcap-devel libffi-devel \
   libgcc.i686 libgnome-keyring-devel libjpeg-devel libstdc++.i686 \
   libX11-devel libXScrnSaver-devel libXtst-devel \
   libxkbcommon-x11-devel ncurses-compat-libs nspr-devel nss-devel \
