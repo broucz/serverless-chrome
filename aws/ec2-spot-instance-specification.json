@@ -1,10 +1,10 @@
 {
-  "SpotPrice": "0.34",
+  "SpotPrice": "0.68",
   "InstanceCount": 1,
   "Type": "one-time",
   "LaunchSpecification": {
     "ImageId": "ami-8c1be5f6",
-    "InstanceType": "c4.2xlarge",
+    "InstanceType": "c5.4xlarge",
     "IamInstanceProfile": {
       "Arn": "this gets updated by the ec2-build.sh script"
     },
@@ -14,7 +14,7 @@
         "Ebs": {
           "DeleteOnTermination": true,
           "VolumeType": "gp2",
-          "VolumeSize": 64,
+          "VolumeSize": 128,
           "SnapshotId": "snap-080eb3cb2eda29974"
         }
       }

@@ -7,7 +7,7 @@
 # Usage: ./ec2-build.sh chromium|firefox stable|beta|dev version|tag
 #
 #
-# Further documentation: 
+# Further documentation:
 # https://github.com/adieuadieu/serverless-chrome/blob/develop/docs/automation.md
 # https://github.com/adieuadieu/serverless-chrome/blob/develop/docs/chrome.md
 #
@@ -28,7 +28,7 @@ FORCE_NEW_BUILD=${FORCE_NEW_BUILD:-}
 
 #
 # Check for some required env variables
-# 
+#
 if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
   echo "Missing required AWS_ACCESS_KEY_ID and/or AWS_SECRET_ACCESS_KEY environment variables"
   exit 1
@@ -66,9 +66,8 @@ JSON=$(jq -c -r \
 # Request the spot instance / launch
 # ref: http://docs.aws.amazon.com/cli/latest/reference/ec2/request-spot-instances.html
 # --valid-until "2018-08-22T00:00:00.000Z" \
-# 
+#
 aws ec2 request-spot-instances \
   --region "$AWS_REGION" \
-  --valid-until "$(date -u +%FT%T.000Z -d '6 hours')" \
   --cli-input-json "$JSON" | \
   jq -r ".SpotInstanceRequests[].Status"

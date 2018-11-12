@@ -36,7 +36,7 @@ build() {
   fi
 
   cd "$PACKAGE_DIRECTORY/builds/$BUILD_NAME"
-    
+
   if "$PROJECT_DIRECTORY/scripts/docker-image-exists.sh" \
       "$DOCKER_ORG/$DOCKER_IMAGE" "$VERSION" \
     && [ -z "$FORCE_NEW_BUILD" ]; then
@@ -51,6 +51,8 @@ build() {
       --build-arg VERSION="$VERSION" \
       "build"
 
+    echo "Building done."
+
     mkdir -p dist/
 
     # Run the container
@@ -61,6 +63,8 @@ build() {
 
     # Give the container and browser some time to start up
     sleep 10
+
+    echo "Container running."
 
     # Test the build and return if it doesn't run
     if ! curl -fs http://localhost:9222/json/version; then
@@ -82,6 +86,8 @@ build() {
     docker cp "$DOCKER_IMAGE-build:/bin/headless-$BUILD_NAME" dist/
     docker stop "$DOCKER_IMAGE-build"
 
+    echo "Copy done."
+
     # Create the public Docker image
     # We do this because the image in which be build ends up being huge
     # due to the source code and build dependencies
@@ -90,6 +96,8 @@ build() {
       -t "$DOCKER_ORG/$DOCKER_IMAGE:$VERSION" \
       --build-arg VERSION="$VERSION" \
       "."
+
+    echo "Image done."
 
     if [ -n "$DO_PUSH" ]; then
       echo "Pushing image to Docker hub"
