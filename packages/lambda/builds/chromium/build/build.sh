@@ -90,15 +90,23 @@ mkdir -p out/Headless && \
   echo 'enable_nacl = false' >> out/Headless/args.gn && \
   gn gen out/Headless
 
+echo "GN done."
+
 # build chromium headless shell
 ninja -C out/Headless headless_shell
 
+echo "Ninja done."
+
 cp out/Headless/headless_shell "$BUILD_BASE/bin/headless-chromium-unstripped"
+
+echo "Copy done."
 
 cd "$BUILD_BASE"
 
 # strip symbols
 strip -o "$BUILD_BASE/bin/headless-chromium" build/chromium/src/out/Headless/headless_shell
+
+echo "Strip done."
 
 # Use UPX to package headless chromium
 # this adds 1-1.5 seconds of startup time so generally
